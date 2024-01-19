@@ -1,5 +1,7 @@
+"use client";
+
 import { ThemeProvider } from "@material-tailwind/react";
 
-export function Provider({ children }: { children: React.ReactNode }) {
+export function Providers({ children }: { children: React.ReactNode }) {
   return <ThemeProvider>{children}</ThemeProvider>;
 }

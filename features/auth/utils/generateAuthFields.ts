@@ -87,7 +87,7 @@ const REGISTRATION_FORM_INFO = {
 
       validation: {
         required: true,
-        pattern: "/^.{8,}$/",
+        pattern: "^.{8,}$",
         message: "Пароль должен содержать минимум 8 символов",
       },
     },

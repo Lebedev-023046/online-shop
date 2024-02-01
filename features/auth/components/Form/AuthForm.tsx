@@ -81,36 +81,40 @@ export function AuthForm({
                   )}
                 />
               </div>
-              {/* <Input {...register(field.name)} /> */}
-              {/* <Field
-                {...field}
-                {...register(field.name, {
-                  required: field.validation.required,
-                  pattern: {
-                    value: new RegExp(field.validation.pattern),
-                    message: field.validation.message,
-                  },
-                })}
-              /> */}
             </Fragment>
           ))}
         </div>
         {acceptTermsButton ? (
-          <Checkbox
-            label={
-              <Typography
-                variant="small"
-                color="gray"
-                className="flex items-center font-normal"
-              >
-                Я согласен с
-                <span className="font-medium transition-colors hover:text-gray-900">
-                  &nbsp;обработкой персональных данных
-                </span>
-              </Typography>
-            }
-            containerProps={{ className: "-ml-2.5" }}
-          />
+          <>
+            <Checkbox
+              label={
+                <Typography
+                  variant="small"
+                  color="gray"
+                  className="flex items-center font-normal"
+                >
+                  Я согласен с
+                  <span className="font-medium transition-colors hover:text-gray-900">
+                    &nbsp;обработкой персональных данных
+                  </span>
+                </Typography>
+              }
+              containerProps={{ className: "-ml-2.5" }}
+              {...register("accept-terms", {
+                required: {
+                  value: true,
+                  message: "Необходимо принять условия",
+                },
+              })}
+            />
+            <ErrorMessage
+              errors={errors}
+              name="accept-terms"
+              render={({ message }) => (
+                <p className="text-sm text-red-900 pt-2">{message}</p>
+              )}
+            />
+          </>
         ) : null}
         <Button type="submit" className="mt-6" fullWidth>
           {buttonText}

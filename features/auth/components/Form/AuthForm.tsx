@@ -31,7 +31,6 @@ export function AuthForm({
     try {
       // Perform additional validation or submission logic here if needed
       console.log(data);
-      console.log("hello");
     } catch (error) {
       // Handle errors or set form errors using setError
     }

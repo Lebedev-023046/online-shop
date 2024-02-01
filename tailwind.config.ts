@@ -5,6 +5,7 @@ const config = withMT({
     "./pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
+    "./features/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
     colors: {
@@ -14,6 +15,10 @@ const config = withMT({
       dark: "#252525",
     },
   },
-  plugins: [],
+  plugins: [
+    require("tailwindcss"),
+    // require("@tailwindcss/deprecation-warnings"),
+    require("autoprefixer"),
+  ],
 });
 export default config;

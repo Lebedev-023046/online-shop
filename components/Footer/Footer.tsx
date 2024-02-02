@@ -2,8 +2,8 @@ import React from "react";
 
 export default function Footer() {
   return (
-    <footer className="flex h-[5rem] items-center justify-center bg-soft">
-      Footer
+    <footer className="h-[5rem]  bg-soft">
+      <div className="flex h-full items-center justify-center">Footer</div>
     </footer>
   );
 }

@@ -21,13 +21,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <Providers>
-          <div>
+        <div className="flex min-h-full flex-col">
+          <Providers>
             <Header />
-            <main>{children}</main>
+            <main className="grow">{children}</main>
             <Footer />
-          </div>
-        </Providers>
+          </Providers>
+        </div>
       </body>
     </html>
   );

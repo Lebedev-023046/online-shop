@@ -9,7 +9,7 @@ const config = withMT({
   ],
   theme: {
     colors: {
-      carrot: "#fa5f1a",
+      orange: "#fa5f1a",
       light: "#ffffff",
       soft: "#f7f0f0",
       dark: "#252525",

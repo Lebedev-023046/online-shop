@@ -7,7 +7,12 @@ export function Search() {
   return (
     <div className="relative">
       <span className="absolute inset-y-0 left-0 flex items-center pl-3">
-        <Image src="/search.svg" alt="search-icon" width={24} height={24} />
+        <Image
+          src="/header/search.svg"
+          alt="search-icon"
+          width={24}
+          height={24}
+        />
       </span>
       <input
         type="text"

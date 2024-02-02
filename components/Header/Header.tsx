@@ -20,7 +20,12 @@ export default function Header() {
         <div className="ml-auto flex gap-4">
           <Search />
           <button className="rounded-[50%] px-1.5  transition duration-300 ease-in-out hover:bg-deep-orange-50">
-            <Image src="/cart.svg" alt="cart-icon" width={24} height={24} />
+            <Image
+              src="/header/cart.svg"
+              alt="cart-icon"
+              width={24}
+              height={24}
+            />
           </button>
         </div>
       </div>

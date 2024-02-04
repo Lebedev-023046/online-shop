@@ -11,6 +11,10 @@ body {
   @apply flex items-center justify-center;
 }
 
+.pseudo-underline {
+  @apply before:absolute before:bottom-0 before:block before:h-[2px] before:w-0 before:bg-black before:transition-all before:duration-300 hover:border-black before:hover:w-full;
+}
+
 @media (width < 768px) {
   html {
     font-size: 14px;

@@ -22,7 +22,7 @@ export function ContentRaw() {
           </div>
         </Link>
       </div>
-      <div className="grid items-center gap-6 overflow-auto sm:grid-cols-2 md:grid-cols-3  lg:grid-cols-4">
+      <div className="grid items-center gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
         <Card />
         <Card />
         <Card />

@@ -14,6 +14,14 @@ const config = withMT({
       soft: "#f7f0f0",
       dark: "#252525",
     },
+    screens: {
+      sm: "425px",
+    },
+    extend: {
+      gridTemplateColumns: {
+        "row-content": "repeat(auto-fit, minmax(200px, 1fr))",
+      },
+    },
   },
   plugins: [
     require("tailwindcss"),

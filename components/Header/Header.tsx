@@ -7,12 +7,20 @@ import { Search } from "./Search";
 
 export default function Header() {
   return (
-    <div className=" h-[5rem] w-full  bg-soft">
-      <div className="m-auto flex h-full w-[95%] items-center gap-10 ">
+    <header className="h-[5rem] w-full">
+      <div className="m-auto flex h-full w-[95%] items-center ">
         {/* left side */}
         <div className="flex items-center gap-6">
-          <h1 className="flex-center h-full text-center indent-1.5 font-bold tracking-[0.375rem] sm:text-2xl lg:text-4xl">
-            <Link href="/">MAZY</Link>
+          <h1 className="h-full text-center indent-1.5 font-bold tracking-[0.375rem] sm:text-2xl lg:text-4xl">
+            <Link href="/">
+              <Image
+                className="h-full w-full"
+                src="/header/logo.svg"
+                alt="logo-icon"
+                width={24}
+                height={24}
+              />
+            </Link>
           </h1>
           <Navigation />
         </div>
@@ -29,6 +37,6 @@ export default function Header() {
           </button>
         </div>
       </div>
-    </div>
+    </header>
   );
 }

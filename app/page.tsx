@@ -1,10 +1,10 @@
-import { Form } from "@/features/auth";
+"use client";
+import { ContentRaw } from "@/features/home/components/ContentRaw";
 
 export default function Home() {
   return (
-    <div className="flex h-dvh mx-auto">
-      <div className="w-[50%] h-full bg-dark"></div>
-      <div className="flex justify-center items-center w-[50%] h-full bg-soft"></div>
+    <div className="mx-auto px-14">
+      <ContentRaw />
     </div>
   );
 }

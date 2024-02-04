@@ -39,7 +39,7 @@ export default function Footer() {
               новостях и акциях MAZY
             </p>
             <input
-              className="w-full max-w-[20rem] bg-[#eee] p-1"
+              className="w-full max-w-[20rem] rounded-sm bg-[#eee] p-1 focus:border-dark focus:outline-none focus:ring-2 focus:ring-dark"
               type="email"
               placeholder="Введите эл. почту"
             />

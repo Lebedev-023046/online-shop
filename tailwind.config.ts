@@ -19,7 +19,7 @@ const config = withMT({
     },
     extend: {
       gridTemplateColumns: {
-        "row-content": "repeat(auto-fit, minmax(200px, 1fr))",
+        "row-content": "repeat(auto-fit, 200px)",
       },
     },
   },

@@ -1,12 +1,14 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Open_Sans } from "next/font/google";
 
-import "./globals.css";
-import Footer from "@/components/Footer";
-import Header from "@/components/Header";
 import { Providers } from "@/providers";
 
-const inter = Inter({ subsets: ["latin"] });
+import "./globals.css";
+
+const inter = Open_Sans({
+  subsets: ["latin", "cyrillic", "cyrillic-ext"],
+  weight: ["300", "400", "500", "700"],
+});
 
 export const metadata: Metadata = {
   title: "MAZY | Главная страница",
@@ -22,13 +24,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <div className="flex min-h-full flex-col">
-          <Providers>
-            <Header />
-            <main className="mx-auto my-[2%] w-[95%] grow">{children}</main>
-            <Footer />
-          </Providers>
-        </div>
+        <Providers>{children}</Providers>
       </body>
     </html>
   );

@@ -15,7 +15,8 @@ const config = withMT({
       dark: "#252525",
     },
     screens: {
-      sm: "425px",
+      sm: "375px",
+      xmd: "900px",
     },
     extend: {
       gridTemplateColumns: {

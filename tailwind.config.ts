@@ -21,6 +21,9 @@ const config = withMT({
     extend: {
       gridTemplateColumns: {
         "row-content": "repeat(auto-fit, 200px)",
+        // "cart-content": "1fr 2fr 1fr 1fr 1fr",
+        "cart-content-md": "1fr 2fr 1fr 1fr 1fr",
+        "cart-content": "1fr 2fr 1fr 1fr",
       },
     },
   },

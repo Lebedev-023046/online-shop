@@ -5,9 +5,9 @@ export default function Register() {
   const props = getAuthFields("register");
 
   return (
-    <div className="flex h-dvh mx-auto">
-      <div className="w-[50%] h-full bg-dark"></div>
-      <div className="flex justify-center items-center w-[50%] h-full bg-soft">
+    <div className="mx-auto flex h-dvh">
+      <div className="h-full w-[50%] bg-dark"></div>
+      <div className="flex h-full w-[50%] items-center justify-center bg-soft">
         <Form {...props} />
       </div>
     </div>

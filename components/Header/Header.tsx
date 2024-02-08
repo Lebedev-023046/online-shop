@@ -8,9 +8,9 @@ import { Search } from "./Search";
 export default function Header() {
   return (
     <header className="h-[5rem] w-full">
-      <div className="m-auto flex h-full w-[95%] items-center ">
+      <div className="m-auto flex h-full w-[95%] items-center">
         {/* left side */}
-        <div className="flex items-center gap-6">
+        <div className="flex items-center gap-6 md:gap-12">
           <h1 className="h-full text-center indent-1.5 font-bold tracking-[0.375rem] sm:text-2xl lg:text-4xl">
             <Link href="/">
               <Image
@@ -27,13 +27,15 @@ export default function Header() {
         {/* right side */}
         <div className="ml-auto flex gap-4">
           <Search />
-          <button className="rounded-[50%] px-1.5  transition duration-300 ease-in-out hover:bg-deep-orange-50">
-            <Image
-              src="/header/cart.svg"
-              alt="cart-icon"
-              width={24}
-              height={24}
-            />
+          <button className="rounded-[50%] px-1.5 transition duration-300 ease-in-out hover:bg-deep-orange-50">
+            <div className="h-6 w-6">
+              <Image
+                src="/header/cart.svg"
+                alt="cart-icon"
+                width={24}
+                height={24}
+              />
+            </div>
           </button>
         </div>
       </div>

@@ -15,6 +15,10 @@ body {
   @apply before:absolute before:bottom-0 before:block before:h-[2px] before:w-0 before:bg-black before:transition-all before:duration-300 hover:border-black before:hover:w-full;
 }
 
+.content-raw-children {
+  @apply [&>div:nth-child(2)]:hidden sm:[&>div:nth-child(2)]:block [&>div:nth-child(3)]:hidden md:[&>div:nth-child(3)]:block [&>div:nth-child(4)]:hidden lg:[&>div:nth-child(4)]:block;
+}
+
 @media (width < 768px) {
   html {
     font-size: 14px;

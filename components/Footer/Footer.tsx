@@ -20,7 +20,7 @@ export default function Footer() {
   return (
     <footer className="border-t-2">
       <div className="p-10">
-        <div className="flex items-start justify-center gap-20">
+        <div className="flex flex-col items-start justify-center gap-x-20 gap-y-8 md:flex-row">
           {footerInfo.map((item, index) => (
             <div key={index}>
               <section>

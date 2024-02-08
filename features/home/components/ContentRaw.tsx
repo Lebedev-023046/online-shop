@@ -6,10 +6,10 @@ import { Card } from "./Card";
 
 export function ContentRaw() {
   return (
-    <div>
-      <div className="flex justify-between">
+    <div className="my-8">
+      <div className="mb-3 flex justify-between">
         <div>Костюмы</div>
-        <Link href={`/categories`} className="relative mb-2 flex gap-1">
+        <Link href={`/categories`} className="relative flex gap-1">
           <div className="pseudo-underline before:duration-0">
             Все{" "}
             <Image
@@ -22,11 +22,12 @@ export function ContentRaw() {
           </div>
         </Link>
       </div>
-      <div className="grid items-center gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-        <Card />
-        <Card />
-        <Card />
-        <Card />
+      <div className="content-raw-children grid items-center gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+        {Array(4)
+          .fill(null)
+          .map((_, i) => (
+            <Card key={i} />
+          ))}
       </div>
     </div>
   );

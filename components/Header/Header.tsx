@@ -29,12 +29,14 @@ export default function Header() {
           <Search />
           <button className="rounded-[50%] px-1.5 transition duration-300 ease-in-out hover:bg-deep-orange-50">
             <div className="h-6 w-6">
-              <Image
-                src="/header/cart.svg"
-                alt="cart-icon"
-                width={24}
-                height={24}
-              />
+              <Link href="/cart">
+                <Image
+                  src="/header/cart.svg"
+                  alt="cart-icon"
+                  width={24}
+                  height={24}
+                />
+              </Link>
             </div>
           </button>
         </div>

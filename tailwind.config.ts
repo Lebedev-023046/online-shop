@@ -9,10 +9,19 @@ const config = withMT({
   ],
   theme: {
     colors: {
-      carrot: "#fa5f1a",
+      orange: "#fa5f1a",
       light: "#ffffff",
       soft: "#f7f0f0",
       dark: "#252525",
+    },
+    screens: {
+      sm: "375px",
+      xmd: "900px",
+    },
+    extend: {
+      gridTemplateColumns: {
+        "row-content": "repeat(auto-fit, 200px)",
+      },
     },
   },
   plugins: [

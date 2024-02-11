@@ -4,8 +4,8 @@ import React from "react";
 export function Summary() {
   return (
     <div className="">
-      <div className="border-b-2 py-8 text-2xl font-bold">Итог</div>
-      <section className="w-full py-8">
+      <div className="border-b-2 px-4 py-8 text-2xl font-bold">Итог</div>
+      <section className="w-full px-4 py-8">
         <div className="flex">
           <div>Количество товаров:</div>
           <div className="ml-auto">4</div>

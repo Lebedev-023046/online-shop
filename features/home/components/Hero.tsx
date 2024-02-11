@@ -10,7 +10,7 @@ const berkshire = Montserrat({
 export function Hero() {
   return (
     <div className="flex-center mb-10 bg-soft">
-      <section className="xmd:w-3/5 flex w-full flex-col items-center justify-end px-6 py-12 text-center">
+      <section className="flex w-full flex-col items-center justify-end px-6 py-12 text-center xmd:w-3/5">
         <h1
           className={`${berkshire.className} mb-4 text-nowrap text-6xl font-medium tracking-wider`}
         >
@@ -21,7 +21,7 @@ export function Hero() {
         </p>
         <p className="font-light">Уют и стиль – в каждой детали!</p>
       </section>
-      <div className="xmd:block hidden w-2/5">
+      <div className="hidden w-2/5 xmd:block">
         <Image
           className="h-auto w-4/5"
           width={633}

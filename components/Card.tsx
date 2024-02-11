@@ -1,3 +1,5 @@
+"use client";
+
 import { Tooltip } from "@material-tailwind/react";
 import Image from "next/image";
 import Link from "next/link";
@@ -12,10 +14,13 @@ export function Card() {
           content="Добавить в корзину"
           placement="left-start"
         >
-          <button className="absolute right-3 top-3 z-10">
+          <button
+            title="Добавить в корзину"
+            className="absolute right-3 top-3 z-10"
+          >
             <Image
               className="w-full"
-              src="card-bag.svg"
+              src="/card-bag.svg"
               alt="card-bag-icon"
               width={24}
               height={24}

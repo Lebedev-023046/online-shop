@@ -1,18 +1,18 @@
 export const navigation = [
   {
     item: "Худи",
-    link: "/categories/hoodie",
+    link: "/category/hoodie",
   },
   {
     item: "Костюмы",
-    link: "/categories/suit",
+    link: "/category/suit",
   },
   {
     item: "Футболки",
-    link: "/categories/t-shirt",
+    link: "/category/t-shirt",
   },
   {
     item: "Палаццо",
-    link: "/categories/palazzo",
+    link: "/category/palazzo",
   },
 ];

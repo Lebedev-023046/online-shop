@@ -9,7 +9,7 @@ export default function Cart() {
         <Header />
         <Items />
       </div>
-      <div className="bg-gray-100 px-4 lg:w-[30%]">
+      <div className="bg-gray-100 lg:w-[30%]">
         <Summary />
       </div>
     </div>

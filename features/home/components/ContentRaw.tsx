@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
-import { Card } from "./Card";
+import { Card } from "@/components/Card";
 
 export function ContentRaw() {
   return (

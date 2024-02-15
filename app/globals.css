@@ -11,6 +11,14 @@ body {
   @apply flex items-center justify-center;
 }
 
+.button {
+  @apply w-full rounded-md px-4 py-2 text-center;
+}
+
+.img {
+  @apply h-fit w-fit object-contain;
+}
+
 .pseudo-underline {
   @apply before:absolute before:bottom-0 before:block before:h-[2px] before:w-0 before:bg-black before:transition-all before:duration-300 hover:border-black before:hover:w-full;
 }

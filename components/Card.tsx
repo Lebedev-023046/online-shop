@@ -8,7 +8,7 @@ import React from "react";
 export function Card() {
   return (
     <div className="relative mx-auto w-full overflow-hidden rounded-lg border-2">
-      <Link href="/products/productId">
+      <Link href="/products/1">
         <Tooltip
           className="bg-soft text-dark"
           content="Добавить в корзину"
@@ -19,7 +19,7 @@ export function Card() {
             className="absolute right-3 top-3 z-10"
           >
             <Image
-              className="w-full"
+              className="img"
               src="/card-bag.svg"
               alt="card-bag-icon"
               width={24}

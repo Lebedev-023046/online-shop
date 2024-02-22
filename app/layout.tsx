@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
 import { Open_Sans } from "next/font/google";
 
+import { useBackgroundContext } from "@/contexts/background";
 import { Providers } from "@/providers";
-
 import "./globals.css";
 
-const inter = Open_Sans({
+const Open_Sans_font = Open_Sans({
   subsets: ["latin", "cyrillic", "cyrillic-ext"],
   weight: ["300", "400", "500", "700"],
 });
@@ -23,7 +23,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body className={`${Open_Sans_font.className} h-full`}>
         <Providers>{children}</Providers>
       </body>
     </html>

@@ -42,7 +42,7 @@ export function AuthForm({
         {title}
       </Typography>
       <form
-        className="mt-8 mb-2 w-80 max-w-screen-lg sm:w-96"
+        className="mb-2 mt-8 w-80 max-w-screen-lg sm:w-96"
         onSubmit={handleSubmit(onSubmit)}
       >
         <div className="mb-1 flex flex-col gap-6">
@@ -77,7 +77,7 @@ export function AuthForm({
                   errors={errors}
                   name={field.name}
                   render={({ message }) => (
-                    <p className="text-sm text-red-900 pt-2">{message}</p>
+                    <p className="pt-2 text-sm text-red-900">{message}</p>
                   )}
                 />
               </div>
@@ -111,7 +111,7 @@ export function AuthForm({
               errors={errors}
               name="accept-terms"
               render={({ message }) => (
-                <p className="text-sm text-red-900 pt-2">{message}</p>
+                <p className="pt-2 text-sm text-red-900">{message}</p>
               )}
             />
           </>

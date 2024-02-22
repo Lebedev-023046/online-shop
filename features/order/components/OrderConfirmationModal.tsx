@@ -32,10 +32,10 @@ export function OrderConfirmationModal({
   } = orderForm;
 
   return (
-    <div className="fixed inset-0 flex h-full w-full items-center justify-center bg-black/20">
-      <div className="m-4 w-full max-w-2xl rounded-lg bg-white p-6 shadow-lg">
+    <div className="fixed inset-0 flex h-full w-full items-center justify-center bg-black/20 p-6">
+      <div className="w-full max-w-2xl rounded-lg bg-white p-6 shadow-lg">
         <h2 className="mb-4 text-xl font-semibold">Детали заказа</h2>
-        <div className="flex gap-4">
+        <div className="flex flex-col gap-4 md:flex-row">
           <div>
             <div className="mb-4">
               <h3 className="text-lg font-semibold">Телефон</h3>

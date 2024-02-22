@@ -107,9 +107,13 @@ export default function OrderPage({
         </h1>
         <div>
           <div className="m-4">
-            <form onSubmit={handleSubmit(onSubmit)} className="h-full border-2">
-              <div className="flex justify-center gap-4">
-                <div className="w-2/7 rounded-md p-6 [&>section+section]:pt-8">
+            <form
+              onSubmit={handleSubmit(onSubmit)}
+              className="h-full w-full border-2"
+            >
+              {/* <div className="flex flex-col justify-center gap-4 xmd:flex-row"> */}
+              <div className="grid justify-center gap-4 sm:grid-cols-1 xmd:grid-cols-[30%_20%_45%]">
+                <div className="rounded-md p-6 [&>section+section]:pt-8">
                   <section>
                     <h1>Телефон получателя</h1>
                     <div>
@@ -137,7 +141,7 @@ export default function OrderPage({
                     </div>
                   </section>
                 </div>
-                <div className="w-1/7 rounded-md  p-6 [&>section+section]:pt-4">
+                <div className="rounded-md  p-6 [&>section+section]:pt-4">
                   <section>
                     <h1 className="">Способ доставки</h1>
                     <fieldset className="">
@@ -155,7 +159,7 @@ export default function OrderPage({
                     </fieldset>
                   </section>
                 </div>
-                <div className="w-2/5 rounded-md [&>section+section]:pt-4">
+                <div className="ounded-md m-6 xmd:col-span-1 [&>section+section]:pt-4">
                   <OrderProductsPrescreen />
                 </div>
               </div>

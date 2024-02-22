@@ -5,7 +5,7 @@ export function OrderProductsPrescreen() {
   return (
     <div>
       <div className="border-b-2">
-        <div className="my-6 h-64 overflow-y-auto [&>div+div]:pt-4">
+        <div className="mb-6 h-64 overflow-y-auto [&>div+div]:pt-4">
           {Array(5)
             .fill(null)
             .map((_, i) => (

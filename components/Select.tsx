@@ -9,7 +9,7 @@ interface Props {
 
 export function Select({ options }: Props) {
   return (
-    <TWSelect>
+    <TWSelect placeholder="">
       {options.map((size, i) => (
         <Option value={size} key={i}>
           {size}

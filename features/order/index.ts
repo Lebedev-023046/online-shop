@@ -6,3 +6,4 @@ export {
 
 export { OrderProductsPrescreen } from "./components/OrderProductsPrescreen";
 export { OrderForm } from "./components/OrderForm";
+export { OrderSummary } from "./components/OrderSummary";

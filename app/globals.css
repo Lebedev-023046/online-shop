@@ -31,6 +31,10 @@ body {
   @apply [&>div:nth-child(2)]:hidden sm:[&>div:nth-child(2)]:block [&>div:nth-child(3)]:hidden md:[&>div:nth-child(3)]:block [&>div:nth-child(4)]:hidden lg:[&>div:nth-child(4)]:block;
 }
 
+.card {
+  @apply mb-5 block rounded border border-gray-200 shadow-md;
+}
+
 @media (width < 768px) {
   html {
     font-size: 14px;

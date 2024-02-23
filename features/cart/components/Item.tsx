@@ -9,7 +9,7 @@ export function CartItem() {
 
   return (
     <div className="py-8">
-      <div className="grid-cols-cart-content md:grid-cols-cart-content-md grid auto-rows-auto justify-items-end gap-4 [&>div:nth-child(1)]:mr-auto [&>div:nth-child(2)]:mr-auto [&>div:nth-child(4)]:hidden md:[&>div:nth-child(4)]:block">
+      <div className="grid auto-rows-auto grid-cols-cart-content justify-items-end gap-4 md:grid-cols-cart-content-md [&>div:nth-child(1)]:mr-auto [&>div:nth-child(2)]:mr-auto [&>div:nth-child(4)]:hidden md:[&>div:nth-child(4)]:block">
         <Image
           className="w-full"
           src="/hero-image.jpg"
@@ -29,6 +29,7 @@ export function CartItem() {
 
         <div>
           <Select
+            placeholder=""
             containerProps={{
               className: "min-w-[4rem]",
             }}

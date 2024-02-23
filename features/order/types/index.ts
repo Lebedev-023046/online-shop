@@ -2,7 +2,7 @@ type deliveryOption = "courier" | "pickup" | "post";
 type paymentMethodOption = "cash" | "card-on-receipt" | "card-online";
 type orderStatus = "pending" | "confirmed" | "shipped" | "delivered";
 
-export interface OrderForm {
+export interface IOrderForm {
   phone_number: string;
   city: string;
   street_name: string;

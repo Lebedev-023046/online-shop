@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Open_Sans } from "next/font/google";
 
-import { useBackgroundContext } from "@/contexts/background";
 import { Providers } from "@/providers";
 import "./globals.css";
 

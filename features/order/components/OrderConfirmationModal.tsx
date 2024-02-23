@@ -3,13 +3,14 @@
 import Link from "next/link";
 import React from "react";
 
+import { Modal } from "@/shared/Modal";
+
 import { OrderProductsPrescreen } from "..";
-import { OrderForm } from "../types";
+import { IOrderForm } from "../types";
 import { deliveryMethods, paymentMethods } from "../utils/radioMap";
-import { useBackgroundContext } from "@/contexts/background";
 
 interface Props {
-  orderForm: OrderForm;
+  orderForm: IOrderForm;
   updateShowConfirmationModal: (value: boolean) => void;
 }
 
@@ -17,8 +18,6 @@ export function OrderConfirmationModal({
   orderForm,
   updateShowConfirmationModal,
 }: Props) {
-  const { isBackgroundActive } = useBackgroundContext();
-
   const {
     phone_number,
     city,
@@ -32,11 +31,11 @@ export function OrderConfirmationModal({
   } = orderForm;
 
   return (
-    <div className="fixed inset-0 flex h-full w-full items-center justify-center bg-black/20 p-6">
+    <Modal onClose={updateShowConfirmationModal.bind(null, false)}>
       <div className="w-full max-w-2xl rounded-lg bg-white p-6 shadow-lg">
         <h2 className="mb-4 text-xl font-semibold">Детали заказа</h2>
         <div className="flex flex-col gap-4 md:flex-row">
-          <div>
+          <div className="grow">
             <div className="mb-4">
               <h3 className="text-lg font-semibold">Телефон</h3>
               <p>{phone_number}</p>
@@ -86,6 +85,6 @@ export function OrderConfirmationModal({
           </Link>
         </div>
       </div>
-    </div>
+    </Modal>
   );
 }

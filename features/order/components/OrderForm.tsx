@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useCallback, useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 
@@ -108,7 +110,7 @@ export function OrderForm() {
                     </fieldset>
                   </section>
                 </div>
-                <div className="ounded-md m-6 xmd:col-span-1 [&>section+section]:pt-4">
+                <div className="m-6 rounded-md xmd:col-span-1 [&>section+section]:pt-4">
                   <OrderProductsPrescreen />
                 </div>
               </div>

@@ -7,7 +7,7 @@ import React from "react";
 
 export function Card() {
   return (
-    <div className="relative mx-auto w-full overflow-hidden rounded-lg border-2">
+    <div className="card relative mx-auto w-full overflow-hidden rounded-lg">
       <Link href="/products/1">
         <Tooltip
           className="bg-soft text-dark"

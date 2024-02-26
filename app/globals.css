@@ -2,11 +2,59 @@
 @tailwind components;
 @tailwind utilities;
 
-/* :root {
-}
-
-@media (prefers-color-scheme: dark) {
-}
-
+html,
 body {
-} */
+  height: 100%;
+}
+
+.flex-center {
+  @apply flex items-center justify-center;
+}
+
+.button {
+  @apply w-full rounded-md px-4 py-2 text-center;
+}
+
+.img {
+  @apply h-fit w-fit object-contain;
+}
+
+.select {
+  @apply block appearance-none rounded-lg;
+}
+
+.pseudo-underline {
+  @apply before:absolute before:bottom-0 before:block before:h-[2px] before:w-0 before:bg-black before:transition-all before:duration-300 hover:border-black before:hover:w-full;
+}
+
+.content-raw-children {
+  @apply [&>div:nth-child(2)]:hidden sm:[&>div:nth-child(2)]:block [&>div:nth-child(3)]:hidden md:[&>div:nth-child(3)]:block [&>div:nth-child(4)]:hidden lg:[&>div:nth-child(4)]:block;
+}
+
+.card {
+  @apply mb-5 block rounded border border-gray-200 shadow-md;
+}
+
+@media (width < 768px) {
+  html {
+    font-size: 14px;
+  }
+}
+
+@media (width > 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+@media (width > 1600px) {
+  html {
+    font-size: 18px;
+  }
+}
+
+@media (width > 1920px) {
+  html {
+    font-size: 25px;
+  }
+}

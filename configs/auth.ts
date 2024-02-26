@@ -9,10 +9,17 @@ export const authConfig: AuthOptions = {
         password: { label: "password", type: "password", required: true },
       },
       async authorize(credentials) {
+        // const { email, password } = credentials as {
+        //   email: string;
+        //   password: string;
+        // };
         if (!credentials?.email || !credentials?.password) return null;
 
         return null;
       },
     }),
   ],
+  pages: {
+    signIn: "/auth/login",
+  },
 };

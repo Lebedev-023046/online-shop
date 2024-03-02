@@ -1,5 +1,7 @@
 import Image from "next/image";
 
+import { Select } from "@/components/Select";
+
 export default function ProductDetails() {
   return (
     <div className="mx-auto w-[95%] py-8">
@@ -25,16 +27,7 @@ export default function ProductDetails() {
             >
               Размер
             </label>
-            <select
-              id="countries"
-              className="select w-full border-2 bg-transparent p-3 text-sm text-gray-900"
-            >
-              {["XS", "S", "M", "L"].map((size, i) => (
-                <option value={size} key={i}>
-                  {size}
-                </option>
-              ))}
-            </select>
+            <Select options={["XS", "S", "M", "L"]} />
             <Image
               className="absolute right-4 top-[55%] -z-10 h-auto rotate-90"
               src="/right-stroke.svg"
@@ -43,19 +36,6 @@ export default function ProductDetails() {
               height={10}
             />
           </div>
-
-          {/* <Select
-            containerProps={{ className: "mt-6" }}
-            value={selectedSize}
-            label="Размер"
-            onChange={val => setSelectedSize(val ?? "S")}
-          >
-            {["XS", "S", "M", "L"].map((size, i) => (
-              <Option value={size} key={i}>
-                {size}
-              </Option>
-            ))}
-          </Select> */}
           <button className="button mt-8 bg-dark text-soft">
             Добавить в корзину
           </button>

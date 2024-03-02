@@ -27,5 +27,10 @@ module.exports = {
       },
     },
   },
-  plugins: [require("tailwindcss"), require("autoprefixer")],
+  plugins: [
+    require("tailwindcss"),
+    // require("@tailwindcss/deprecation-warnings"),
+    require("autoprefixer"),
+  ],
 };
+export default config;

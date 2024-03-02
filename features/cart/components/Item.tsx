@@ -1,8 +1,9 @@
 "use client";
 
-import { Option, Select } from "@material-tailwind/react";
 import Image from "next/image";
 import React, { useState } from "react";
+
+import { Select } from "@/components/Select";
 
 export function CartItem() {
   const [amountOfProductItems, setAmountOfProductItems] = useState<string>("1");
@@ -29,19 +30,10 @@ export function CartItem() {
 
         <div>
           <Select
-            placeholder=""
-            containerProps={{
-              className: "min-w-[4rem]",
-            }}
+            options={["1", "2", "3", "4"]}
             value={amountOfProductItems}
-            onChange={value => setAmountOfProductItems(value ?? "1")}
-          >
-            {["1", "2", "3", "4"].map((amount, i) => (
-              <Option value={amount} key={i}>
-                {amount}
-              </Option>
-            ))}
-          </Select>
+            updateValue={setAmountOfProductItems}
+          />
         </div>
         <div>148 BYN</div>
         <div>{+amountOfProductItems * 148} BYN</div>

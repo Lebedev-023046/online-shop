@@ -1,20 +1,22 @@
-"use client";
-
-import { Option, Select as TWSelect } from "@material-tailwind/react";
-import React from "react";
-
 interface Props {
   options: string[];
+  value?: string;
+  updateValue?: (value: string) => void;
 }
 
-export function Select({ options }: Props) {
+export function Select({ options, value, updateValue }: Props) {
   return (
-    <TWSelect placeholder="">
+    <select
+      id="countries"
+      value={value}
+      onChange={e => updateValue?.(e.target.value)}
+      className="select bg-transparent text-gray-900 w-full border-2 p-3 text-sm"
+    >
       {options.map((size, i) => (
-        <Option value={size} key={i}>
+        <option value={size} key={i}>
           {size}
-        </Option>
+        </option>
       ))}
-    </TWSelect>
+    </select>
   );
 }

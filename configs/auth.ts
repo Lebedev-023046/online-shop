@@ -1,5 +1,9 @@
+import { PrismaAdapter } from "@next-auth/prisma-adapter";
 import { AuthOptions } from "next-auth";
 import Credentials from "next-auth/providers/credentials";
+
+import prisma from "@/lib/prisma";
+
 export const authConfig: AuthOptions = {
   providers: [
     Credentials({
@@ -19,6 +23,17 @@ export const authConfig: AuthOptions = {
       },
     }),
   ],
+  // adapter: PrismaAdapter(prisma),
+  // callbacks: {
+  //   // triggered by getSession and useSession calls
+  //   // documents https://next-auth.js.org/configuration/callbacks
+  //   async session({ session, user }) {
+  //     if (user.id && session?.user) {
+  //       session.user.id = user.id;
+  //     }
+  //     return session;
+  //   },
+  // },
   pages: {
     signIn: "/auth/login",
   },

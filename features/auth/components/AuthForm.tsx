@@ -2,8 +2,11 @@
 
 import { ErrorMessage } from "@hookform/error-message";
 import Link from "next/link";
-import { Fragment } from "react";
+import { Fragment, useEffect } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
+import useSWR from "swr";
+
+import { fetcher } from "@/configs/swr";
 
 import { AuthFormInfo } from "../types";
 
@@ -20,9 +23,25 @@ export function AuthForm({
     formState: { errors },
   } = useForm();
 
+  useEffect(() => {
+    const getUsers = async () => {
+      const data = await fetch("/api/user");
+      const responce = await data.json();
+      console.log("responce: ", responce);
+    };
+    getUsers();
+  }, []);
+
   const onSubmit: SubmitHandler<Record<string, any>> = async data => {
     try {
-      // Perform additional validation or submission logic here if needed
+      const response = await fetch("/api/user", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
+      console.log("response: ", response);
       console.log(data);
     } catch (error) {
       // Handle errors or set form errors using setError

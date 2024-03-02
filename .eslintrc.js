@@ -3,7 +3,12 @@ module.exports = {
     browser: true,
     es2021: true,
   },
-  extends: ["next", "plugin:@typescript-eslint/recommended", "plugin:prettier/recommended", "next/core-web-vitals"],
+  extends: [
+    "next",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:prettier/recommended",
+    "next/core-web-vitals",
+  ],
   overrides: [
     {
       env: {
@@ -26,8 +31,12 @@ module.exports = {
     "@typescript-eslint/explicit-function-return-type": "off",
     "@typescript-eslint/explicit-module-boundary-types": "off",
     "@typescript-eslint/no-explicit-any": "off",
-    "@typescript-eslint/no-unused-vars": "warn",
-    "sort-imports": ["error", { ignoreCase: true, ignoreDeclarationSort: true }],
+    "@typescript-eslint/no-var": "off",
+    "@typescript-eslint/no-unused-vars": "off",
+    "sort-imports": [
+      "error",
+      { ignoreCase: true, ignoreDeclarationSort: true },
+    ],
     // "import/order": [
     //   "error",
     //   {
@@ -54,7 +63,12 @@ module.exports = {
     "import/order": [
       1,
       {
-        groups: [["external", "builtin"], "internal", ["sibling", "parent"], "index"],
+        groups: [
+          ["external", "builtin"],
+          "internal",
+          ["sibling", "parent"],
+          "index",
+        ],
         pathGroups: [
           { pattern: "@(react|next)/", group: "external", position: "before" },
           { pattern: "@/**", group: "internal" },

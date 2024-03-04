@@ -6,7 +6,7 @@ import { navigation } from "@/constants/navigation";
 export function Navigation() {
   return (
     <nav>
-      <div className="md:flex hidden  h-full space-x-3">
+      <div className="hidden h-full space-x-3 md:flex">
         {navigation.map((navItem, index) => (
           <Link
             key={index}

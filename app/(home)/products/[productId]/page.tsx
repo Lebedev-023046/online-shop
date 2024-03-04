@@ -56,9 +56,7 @@ export default function ProductDetails() {
             />
           </div>
 
-          <button className="button bg-dark text-soft mt-8">
-            Добавить в корзину
-          </button>
+          <button className="mt-8·bg-dark·text-soft">Добавить в корзину</button>
         </section>
       </div>
     </div>

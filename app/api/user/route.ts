@@ -5,7 +5,7 @@ import prisma from "@/lib/prisma";
 
 export async function GET(request: Request) {
   // console.log("REQUEST: ", request);
-  const customers = await prisma.customer.findMany();
+  const customers = await prisma.user.findMany();
 
   // console.log("customers: ", customers);
   return new NextResponse(JSON.stringify(customers), {
@@ -22,7 +22,7 @@ export async function POST(request: Request) {
   console.log("name: ", name);
 
   // console.log("REQUEST: ", request);
-  const newCustomer = await prisma.customer.create({
+  const newCustomer = await prisma.user.create({
     data: {
       name,
       email,

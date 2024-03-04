@@ -27,7 +27,7 @@ export default function Header() {
         {/* right side */}
         <div className="ml-auto flex gap-4">
           <Search />
-          <button className="rounded-[50%] px-1.5 transition duration-300 ease-in-out hover:bg-deep-orange-50">
+          <button className="hover:bg-deep-orange-50 rounded-[50%] px-1.5 transition duration-300 ease-in-out">
             <div className="h-6 w-6">
               <Link href="/cart">
                 <Image

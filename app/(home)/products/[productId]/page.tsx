@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { useCallback, useState } from "react";
 
-import { Select } from "@/components";
+import { Select } from "@/components/Select";
 import { OptionType } from "@/types/Select";
 import { toReactSelectOption } from "@/utils";
 

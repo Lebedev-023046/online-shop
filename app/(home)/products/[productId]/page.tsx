@@ -1,6 +1,22 @@
+"use client";
+
 import Image from "next/image";
+import { useCallback, useState } from "react";
+
+import { Select } from "@/components";
+import { OptionType } from "@/types/Select";
+import { toReactSelectOption } from "@/utils";
 
 export default function ProductDetails() {
+  const [itemSize, setItemSize] = useState<OptionType>(
+    toReactSelectOption<string>("XS"),
+  );
+
+  const updateItemSize = useCallback(
+    (value: OptionType) => setItemSize(value),
+    [],
+  );
+
   return (
     <div className="mx-auto w-[95%] py-8">
       <div className="mx-auto flex w-[80%] flex-col justify-center gap-8 md:w-full md:flex-row">
@@ -25,17 +41,13 @@ export default function ProductDetails() {
             >
               Размер
             </label>
-            <select
-              id="countries"
-              className="select w-full border-2 bg-transparent p-3 text-sm text-gray-900"
-            >
-              {["XS", "S", "M", "L"].map((size, i) => (
-                <option value={size} key={i}>
-                  {size}
-                </option>
-              ))}
-            </select>
+            <Select
+              value={itemSize}
+              updateValue={updateItemSize}
+              options={["XS", "S", "M", "L"]}
+            />
             <Image
+              priority
               className="absolute right-4 top-[55%] -z-10 h-auto rotate-90"
               src="/right-stroke.svg"
               alt="select-icon"
@@ -44,19 +56,7 @@ export default function ProductDetails() {
             />
           </div>
 
-          {/* <Select
-            containerProps={{ className: "mt-6" }}
-            value={selectedSize}
-            label="Размер"
-            onChange={val => setSelectedSize(val ?? "S")}
-          >
-            {["XS", "S", "M", "L"].map((size, i) => (
-              <Option value={size} key={i}>
-                {size}
-              </Option>
-            ))}
-          </Select> */}
-          <button className="button mt-8 bg-dark text-soft">
+          <button className="button bg-dark text-soft mt-8">
             Добавить в корзину
           </button>
         </section>

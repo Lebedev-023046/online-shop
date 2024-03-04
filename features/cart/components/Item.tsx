@@ -1,11 +1,21 @@
 "use client";
 
-import { Option, Select } from "@material-tailwind/react";
 import Image from "next/image";
-import React, { useState } from "react";
+import React, { useCallback, useState } from "react";
+
+import { Select } from "@/components/Select";
+import { OptionType } from "@/types/Select";
+import { toReactSelectOption } from "@/utils";
 
 export function CartItem() {
-  const [amountOfProductItems, setAmountOfProductItems] = useState<string>("1");
+  const [amountOfProductItems, setAmountOfProductItems] = useState<OptionType>(
+    toReactSelectOption<string>("1"),
+  );
+
+  const updateProductNumber = useCallback(
+    (value: OptionType) => setAmountOfProductItems(value),
+    [],
+  );
 
   return (
     <div className="py-8">
@@ -27,24 +37,15 @@ export function CartItem() {
           </button>
         </div>
 
-        <div>
+        <div className="">
           <Select
-            placeholder=""
-            containerProps={{
-              className: "min-w-[4rem]",
-            }}
             value={amountOfProductItems}
-            onChange={value => setAmountOfProductItems(value ?? "1")}
-          >
-            {["1", "2", "3", "4"].map((amount, i) => (
-              <Option value={amount} key={i}>
-                {amount}
-              </Option>
-            ))}
-          </Select>
+            updateValue={updateProductNumber}
+            options={["1", "2", "3", "4"]}
+          />
         </div>
         <div>148 BYN</div>
-        <div>{+amountOfProductItems * 148} BYN</div>
+        <div>{+amountOfProductItems.value * 148} BYN</div>
       </div>
     </div>
   );

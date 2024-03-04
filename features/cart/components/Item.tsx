@@ -1,12 +1,21 @@
 "use client";
 
 import Image from "next/image";
-import React, { useState } from "react";
+import React, { useCallback, useState } from "react";
 
 import { Select } from "@/components/Select";
+import { OptionType } from "@/types/Select";
+import { toReactSelectOption } from "@/utils";
 
 export function CartItem() {
-  const [amountOfProductItems, setAmountOfProductItems] = useState<string>("1");
+  const [amountOfProductItems, setAmountOfProductItems] = useState<OptionType>(
+    toReactSelectOption<string>("1"),
+  );
+
+  const updateProductNumber = useCallback(
+    (value: OptionType) => setAmountOfProductItems(value),
+    [],
+  );
 
   return (
     <div className="py-8">
@@ -28,15 +37,15 @@ export function CartItem() {
           </button>
         </div>
 
-        <div>
+        <div className="">
           <Select
-            options={["1", "2", "3", "4"]}
             value={amountOfProductItems}
-            updateValue={setAmountOfProductItems}
+            updateValue={updateProductNumber}
+            options={["1", "2", "3", "4"]}
           />
         </div>
         <div>148 BYN</div>
-        <div>{+amountOfProductItems * 148} BYN</div>
+        <div>{+amountOfProductItems.value * 148} BYN</div>
       </div>
     </div>
   );

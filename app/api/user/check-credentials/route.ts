@@ -17,27 +17,24 @@ export async function POST(req: Request) {
     where: { email },
   });
 
-  console.log({ user });
+  console.log("AFTER FIND FIRST METHOD: ", user);
 
   logger.debug("finding user", user);
 
   if (!user) {
     logger.debug("user not found");
-    return new Response(JSON.stringify({ error: "Пользователь не найден" }), {
-      status: 401,
-    });
+    return new Response(
+      JSON.stringify({ success: null, error: "Пользователь не найден" }),
+    );
   } else {
     if (user.password !== hashPassword(password) || user.email !== email) {
       logger.debug("incorrect credentials");
       return new Response(
-        JSON.stringify({ error: "Неверный логин или пароль" }),
-        { status: 401 },
+        JSON.stringify({ success: null, error: "Неверный логин или пароль" }),
       );
     } else {
       logger.debug("correct credentials");
-      return new Response(JSON.stringify(user), {
-        status: 200,
-      });
+      return new Response(JSON.stringify({ success: user, error: null }));
     }
   }
 }

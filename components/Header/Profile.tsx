@@ -51,7 +51,7 @@ export function Profile({ user }: Props) {
     >
       <button
         title="Профиль"
-        className="text-soft bg-dark h-8 w-8 rounded-full"
+        className="h-8·w-8·rounded-full·bg-dark·text-soft"
       >
         {user?.name ? user.name[0] : ""}
       </button>

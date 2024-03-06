@@ -3,6 +3,7 @@ import { AuthOptions, User } from "next-auth";
 import Credentials from "next-auth/providers/credentials";
 
 import prisma from "@/lib/prisma";
+import { IUserResponse } from "@/types";
 
 export const authConfig: AuthOptions = {
   session: {
@@ -33,50 +34,21 @@ export const authConfig: AuthOptions = {
             }),
           },
         );
-        const user: User = await res.json();
+        const user = await res.json();
 
-        console.log({ user });
+        console.log("user from authConfig: ", user);
 
-        if (user) {
-          return user;
+        const userResponse = user as IUserResponse;
+
+        if (userResponse.success) {
+          return userResponse.success;
         } else {
-          return null;
+          throw new Error(userResponse.error);
         }
       },
     }),
   ],
-  // providers: [
-  //   Credentials({
-  //     id: "credentials",
-  //     name: "credentials",
-  //     credentials: {
-  //       email: {},
-  //       password: {},
-  //     },
-  //     async authorize(credentials) {
-  //       console.log(credentials || "no data");
-  //       const { email, password } = credentials.data;
-  //       console.log(email, password);
-  //       return null;
-  //       // const user = await fetch(
-  //       //   `${process.env.NEXTAUTH_URL}/api/user/check-credentials`,
-  //       //   {
-  //       //     method: "POST",
-  //       //     headers: {
-  //       //       "Content-Type": "application/x-www-form-urlencoded",
-  //       //       accept: "application/json",
-  //       //     },
-  //       //     body: credentials,
-  //       //   },
-  //       // );
-  //       // if (user) {
-  //       //   return user;
-  //       // } else {
-  //       //   return null;
-  //       // }
-  //     },
-  //   }),
-  // ],
+
   adapter: PrismaAdapter(prisma),
   callbacks: {
     jwt({ token, account, user }) {
@@ -87,8 +59,6 @@ export const authConfig: AuthOptions = {
       return token;
     },
     session({ session, token }) {
-      // I skipped the line below coz it gave me a TypeError
-      // session.accessToken = token.accessToken;
       session.user.id = token.id;
       return session;
     },

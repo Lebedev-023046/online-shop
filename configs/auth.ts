@@ -1,40 +1,96 @@
 import { PrismaAdapter } from "@next-auth/prisma-adapter";
-import { AuthOptions } from "next-auth";
+import { AuthOptions, User } from "next-auth";
 import Credentials from "next-auth/providers/credentials";
 
 import prisma from "@/lib/prisma";
 
 export const authConfig: AuthOptions = {
+  session: {
+    strategy: "jwt",
+  },
+  pages: {
+    signIn: "/auth/login",
+  },
   providers: [
     Credentials({
       name: "Credentials",
       credentials: {
-        email: { label: "email", type: "text", required: true },
-        password: { label: "password", type: "password", required: true },
+        username: { label: "Username", type: "text", placeholder: "jsmith" },
+        password: { label: "Password", type: "password" },
       },
       async authorize(credentials) {
-        // const { email, password } = credentials as {
-        //   email: string;
-        //   password: string;
-        // };
-        if (!credentials?.email || !credentials?.password) return null;
+        const res = await fetch(
+          `${process.env.NEXTAUTH_URL}/api/user/check-credentials`,
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/x-www-form-urlencoded",
+              accept: "application/json",
+            },
+            body: JSON.stringify({
+              username: credentials?.username,
+              password: credentials?.password,
+            }),
+          },
+        );
+        const user: User = await res.json();
 
-        return null;
+        console.log({ user });
+
+        if (user) {
+          return user;
+        } else {
+          return null;
+        }
       },
     }),
   ],
-  // adapter: PrismaAdapter(prisma),
-  // callbacks: {
-  //   // triggered by getSession and useSession calls
-  //   // documents https://next-auth.js.org/configuration/callbacks
-  //   async session({ session, user }) {
-  //     if (user.id && session?.user) {
-  //       session.user.id = user.id;
-  //     }
-  //     return session;
-  //   },
-  // },
-  pages: {
-    signIn: "/auth/login",
+  // providers: [
+  //   Credentials({
+  //     id: "credentials",
+  //     name: "credentials",
+  //     credentials: {
+  //       email: {},
+  //       password: {},
+  //     },
+  //     async authorize(credentials) {
+  //       console.log(credentials || "no data");
+  //       const { email, password } = credentials.data;
+  //       console.log(email, password);
+  //       return null;
+  //       // const user = await fetch(
+  //       //   `${process.env.NEXTAUTH_URL}/api/user/check-credentials`,
+  //       //   {
+  //       //     method: "POST",
+  //       //     headers: {
+  //       //       "Content-Type": "application/x-www-form-urlencoded",
+  //       //       accept: "application/json",
+  //       //     },
+  //       //     body: credentials,
+  //       //   },
+  //       // );
+  //       // if (user) {
+  //       //   return user;
+  //       // } else {
+  //       //   return null;
+  //       // }
+  //     },
+  //   }),
+  // ],
+  adapter: PrismaAdapter(prisma),
+  callbacks: {
+    jwt({ token, account, user }) {
+      if (account) {
+        token.accessToken = account.access_token;
+        token.id = user?.id;
+      }
+      return token;
+    },
+    session({ session, token }) {
+      // I skipped the line below coz it gave me a TypeError
+      // session.accessToken = token.accessToken;
+      session.user.id = token.id;
+      return session;
+    },
   },
 };

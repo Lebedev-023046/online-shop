@@ -1,6 +1,8 @@
 import { AuthFormInfo } from "../types";
 
-export const getAuthFields = (state: "login" | "register"): AuthFormInfo => {
+export const getAuthFields = (
+  state: "login" | "register",
+): Omit<AuthFormInfo, "action"> => {
   const stateMap = {
     login: AUTHORIZATION_FORM_INFO,
     register: REGISTRATION_FORM_INFO,

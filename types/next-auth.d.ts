@@ -13,6 +13,8 @@ declare module "next-auth" {
    * Extends the session type with the custom user type.
    */
   interface Session {
-    user?: User;
+    user: {
+      id: string;
+    } & DefaultSession["user"];
   }
 }

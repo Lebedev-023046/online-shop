@@ -42,9 +42,6 @@ export function Modal({ children, onClose }: ModalProps) {
     document.addEventListener("mousedown", handleClickOutside);
     document.addEventListener("keydown", handleKeyDown);
 
-    // Prevent body from scrolling
-    document.body.style.overflow = "hidden";
-
     // Cleanup function
     return () => {
       document.body.style.overflow = "auto";

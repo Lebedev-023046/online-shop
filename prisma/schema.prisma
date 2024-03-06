@@ -13,9 +13,9 @@ datasource db {
 model User {
   id            String    @id @default(uuid())
   name          String    @db.VarChar(100)
-  email         String    @db.VarChar(350)
+  email         String    @unique @db.VarChar(350)
   emailVerified DateTime? @map("email_verified")
-  image         String    @db.VarChar(500)
+  image         String    @default("") @db.VarChar(500)
   password      String    @db.VarChar(500)
   isAdmin       Boolean   @default(false)
 

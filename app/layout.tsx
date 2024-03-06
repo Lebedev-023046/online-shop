@@ -22,7 +22,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${Open_Sans_font.className} h-full`}>
+      <body className={`${Open_Sans_font.className} flex flex-col`}>
         <Providers>{children}</Providers>
       </body>
     </html>

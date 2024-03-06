@@ -1,13 +1,19 @@
 import Image from "next/image";
 import Link from "next/link";
+import { useSession } from "next-auth/react";
 import React from "react";
 
 import { Navigation } from "./Navigation";
+import { Profile } from "./Profile";
 import { Search } from "./Search";
 
 export default function Header() {
+  const { data } = useSession();
+
+  console.log({ data });
+
   return (
-    <header className="h-[5rem] w-full">
+    <header className="w-full py-5">
       <div className="m-auto flex h-full w-[95%] items-center">
         {/* left side */}
         <div className="flex items-center gap-6 md:gap-12">
@@ -40,6 +46,7 @@ export default function Header() {
             </div>
           </button>
         </div>
+        <Profile user={data?.user} />
       </div>
     </header>
   );

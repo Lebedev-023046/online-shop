@@ -1,15 +1,22 @@
 import React from "react";
 
-import { ContentRaw } from "./ContentRaw";
+import { IProductPreview } from "@/types";
 
-export function ContentRaws() {
+import { ContentRaw } from "./ContentRaw";
+import { RAW_ORDER_INFO } from "../constants";
+
+export function ContentRaws(props: IProductPreview) {
+  const { productPreviews } = props;
+  console.log("client", productPreviews);
   return (
     <div className="mx-auto w-[95%]">
-      {Array(4)
-        .fill(null)
-        .map((_, i) => (
-          <ContentRaw key={i} />
-        ))}
+      {RAW_ORDER_INFO.map((headerInfo, i) => (
+        <ContentRaw
+          products={productPreviews[i]}
+          headerInfo={headerInfo}
+          key={i}
+        />
+      ))}
     </div>
   );
 }

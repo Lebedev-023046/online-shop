@@ -10,6 +10,7 @@ datasource db {
   directUrl = env("POSTGRES_URL_NON_POOLING")
 }
 
+// USER
 model User {
   id            String    @id @default(uuid())
   name          String    @db.VarChar(100)
@@ -69,4 +70,64 @@ model VerificationRequest {
   updatedAt  DateTime @updatedAt
 
   @@unique([identifier, token])
+}
+
+// PRODUCT
+
+enum ProductCategory {
+  HOODIE
+  PALAZZO
+  SUIT
+  T_SHIRT
+
+  @@map(name: "product_category")
+}
+
+enum Size {
+  XS
+  S
+  M
+  L
+  XL
+
+  @@map(name: "size")
+}
+
+model Product {
+  id Int @id @default(autoincrement())
+
+  name         String @db.VarChar(200)
+  description  String @db.VarChar(20000)
+  color        String @db.VarChar(100)
+  price        Float
+  productImage String @db.VarChar(500)
+
+  category_name ProductCategory
+  product_item  ProductItem[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map(name: "product")
+}
+
+model ProductItem {
+  id Int @id @default(autoincrement())
+
+  qty_in_stock Int
+  // cart_id Int
+  // cart    Cart @relation(fields: [cart_id], references: [id])
+
+  product_id Int
+  product    Product @relation(fields: [product_id], references: [id])
+
+  size    Size
+  article String @db.VarChar(100)
+
+  // order_line OrderLine[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map(name: "product_item")
 }

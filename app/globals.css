@@ -23,16 +23,16 @@ body {
   @apply block appearance-none rounded-lg;
 }
 
-.pseudo-underline::before {
-  @apply bg-black hover:border-black absolute bottom-0 block h-[2px] w-0 transition-all duration-300 hover:w-full;
+.pseudo-underline {
+  @apply before:absolute before:bottom-0 before:block before:h-[2px] before:w-0 before:bg-black before:transition-all before:duration-300 hover:border-black before:hover:w-full;
 }
 
 .content-raw-children {
-  @apply md:[&>div:nth-child(3)]:block lg:[&>div:nth-child(4)]:block [&>div:nth-child(2)]:hidden sm:[&>div:nth-child(2)]:block [&>div:nth-child(3)]:hidden [&>div:nth-child(4)]:hidden;
+  @apply [&>div:nth-child(2)]:hidden sm:[&>div:nth-child(2)]:block [&>div:nth-child(3)]:hidden md:[&>div:nth-child(3)]:block [&>div:nth-child(4)]:hidden lg:[&>div:nth-child(4)]:block;
 }
 
 .card {
-  @apply border-gray-200 mb-5 block rounded border shadow-md;
+  @apply block rounded border border-gray-200 shadow-md;
 }
 
 @media (width < 768px) {

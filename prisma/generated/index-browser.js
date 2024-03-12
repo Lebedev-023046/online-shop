@@ -154,6 +154,28 @@ exports.Prisma.VerificationRequestScalarFieldEnum = {
   updatedAt: 'updatedAt'
 };
 
+exports.Prisma.ProductScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  description: 'description',
+  color: 'color',
+  price: 'price',
+  productImage: 'productImage',
+  category_name: 'category_name',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.ProductItemScalarFieldEnum = {
+  id: 'id',
+  qty_in_stock: 'qty_in_stock',
+  product_id: 'product_id',
+  size: 'size',
+  article: 'article',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -168,13 +190,28 @@ exports.Prisma.NullsOrder = {
   first: 'first',
   last: 'last'
 };
+exports.ProductCategory = exports.$Enums.ProductCategory = {
+  HOODIE: 'HOODIE',
+  PALAZZO: 'PALAZZO',
+  SUIT: 'SUIT',
+  T_SHIRT: 'T_SHIRT'
+};
 
+exports.Size = exports.$Enums.Size = {
+  XS: 'XS',
+  S: 'S',
+  M: 'M',
+  L: 'L',
+  XL: 'XL'
+};
 
 exports.Prisma.ModelName = {
   User: 'User',
   Account: 'Account',
   Session: 'Session',
-  VerificationRequest: 'VerificationRequest'
+  VerificationRequest: 'VerificationRequest',
+  Product: 'Product',
+  ProductItem: 'ProductItem'
 };
 
 /**

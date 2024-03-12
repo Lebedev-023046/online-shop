@@ -29,9 +29,9 @@ export function Card({ product }: Props) {
           />
         </button>
 
-        <div className="">
+        <div className="relative">
           <Image
-            className="aspect-[3/4] w-full object-cover"
+            className="aspect-[3/4]  w-full  object-cover"
             src={productImage}
             alt="product-img"
             width={225}

@@ -32,7 +32,7 @@ body {
 }
 
 .card {
-  @apply flex rounded border border-gray-200 shadow-md;
+  @apply block rounded border border-gray-200 shadow-md;
 }
 
 @media (width < 768px) {

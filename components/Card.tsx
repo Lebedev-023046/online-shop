@@ -4,10 +4,18 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
-export function Card() {
+import { Product } from "@/prisma/generated";
+
+interface Props {
+  product: Product;
+}
+
+export function Card({ product }: Props) {
+  const { id, name, price, productImage } = product;
+
   return (
     <div className="card relative mx-auto w-full overflow-hidden rounded-lg">
-      <Link href="/products/1">
+      <Link href={`/products/${id}`}>
         <button
           title="Добавить в корзину"
           className="absolute right-3 top-3 z-10"
@@ -21,18 +29,19 @@ export function Card() {
           />
         </button>
 
-        <div className="relative">
+        <div className="">
           <Image
-            className="aspect-[3/4] w-full"
-            src="/hero-image.jpg"
-            alt="hero-img"
+            className="aspect-[3/4] w-full object-cover"
+            src={productImage}
+            alt="product-img"
             width={225}
             height={300}
           />
         </div>
+
         <div className="p-2 text-center">
-          <div className="mb-1 font-medium">Костюм женский серый</div>
-          <div className="font-bold">148 BYN</div>
+          <div className="mb-1 font-medium">{name}</div>
+          <div className="font-bold">{price}</div>
         </div>
       </Link>
     </div>

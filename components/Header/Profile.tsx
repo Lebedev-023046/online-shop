@@ -72,15 +72,17 @@ export function Profile({ user }: Props) {
       </div>
     </div>
   ) : (
-    <div title="Войти" className="ml-2 h-6 w-6">
-      <Link href="/auth/login">
-        <Image
-          src="/header/signin.svg"
-          width={24}
-          height={24}
-          alt="signin-icon"
-        />
-      </Link>
-    </div>
+    <button>
+      <div title="Войти" className="ml-2 h-6 w-6">
+        <Link href="/auth/login">
+          <Image
+            src="/header/signin.svg"
+            width={24}
+            height={24}
+            alt="signin-icon"
+          />
+        </Link>
+      </div>
+    </button>
   );
 }

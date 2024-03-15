@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
-import { useSearchAreaContext } from "@/contexts/SearctArea";
+import { useHeaderExpandContext } from "@/contexts/ExpandHeader";
 import { Product } from "@/prisma/generated";
 
 interface Props {
@@ -15,11 +15,11 @@ interface Props {
 export function Card({ product, isSearchArea }: Props) {
   const { id, name, price, productImage } = product;
 
-  const { updateShouldSearchAreaOpen } = useSearchAreaContext();
+  const { updateShouldHeaderExpand } = useHeaderExpandContext();
 
   return (
     <div
-      onClick={() => updateShouldSearchAreaOpen(false)}
+      onClick={() => updateShouldHeaderExpand(false)}
       className={`card text-dark ${isSearchArea ? "text-xs" : "text-base"} relative mx-auto w-full overflow-hidden rounded-lg`}
     >
       <Link href={`/products/${id}`}>

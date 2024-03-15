@@ -5,12 +5,11 @@ import Link from "next/link";
 import { useSession } from "next-auth/react";
 import React, { useCallback, useState } from "react";
 
-import { useSearchAreaContext } from "@/contexts/SearctArea";
-
 import { Navigation } from "./Navigation";
 import { Profile } from "./Profile";
 import { Search } from "./Search";
 import { SearchArea } from "./SearchArea";
+import { ExpandHeader } from "@/shared/ExpandHeader";
 
 export default function Header() {
   const { data } = useSession();
@@ -30,15 +29,15 @@ export default function Header() {
       <div className="w-full py-5">
         <div className="m-auto flex h-full w-[95%] items-center">
           {/* left side */}
-          <div className="flex items-center gap-6 md:gap-12">
-            <h1 className="h-full text-center indent-1.5 font-bold tracking-[0.375rem] sm:text-2xl lg:text-4xl">
-              <Link href="/">
+          <div className="flex items-center gap-4 pr-4 md:gap-12">
+            <h1 className="h-6 w-24">
+              <Link className="block" href="/">
                 <Image
-                  className="h-full w-full"
+                  className="block h-[25px] w-[100px]"
                   src="/header/logo.svg"
                   alt="logo-icon"
-                  width={24}
-                  height={24}
+                  width={100}
+                  height={25}
                 />
               </Link>
             </h1>
@@ -64,7 +63,13 @@ export default function Header() {
         </div>
       </div>
 
-      <SearchArea query={query} />
+      {/* <ExpandHeader type="menu">
+        <Navigation />
+      </ExpandHeader> */}
+
+      <ExpandHeader type="search">
+        <SearchArea query={query} />
+      </ExpandHeader>
     </header>
   );
 }

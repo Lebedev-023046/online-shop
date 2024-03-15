@@ -1,9 +1,8 @@
 "use client";
 
+import { useHeaderExpandContext } from "@/contexts/ExpandHeader";
 import Image from "next/image";
 import React, { useState } from "react";
-
-import { useSearchAreaContext } from "@/contexts/SearctArea";
 
 interface Props {
   query: string;
@@ -11,7 +10,8 @@ interface Props {
 }
 
 export function Search({ query, updateQuery }: Props) {
-  const { updateShouldSearchAreaOpen } = useSearchAreaContext();
+  const { shouldHeaderExpand, updateShouldHeaderExpand } =
+    useHeaderExpandContext();
 
   return (
     <div className="relative">
@@ -27,9 +27,9 @@ export function Search({ query, updateQuery }: Props) {
         type="text"
         value={query}
         onChange={updateQuery}
-        onFocus={() => updateShouldSearchAreaOpen(true)}
+        onFocus={() => updateShouldHeaderExpand(true)}
         onBlur={() => updateQuery("")}
-        className="focus:border-dark focus:ring-dark xmd:w-80  rounded-md border border-gray-300 bg-white py-2 pl-10 pr-3 leading-5 placeholder-gray-500 focus:outline-none focus:ring-1 sm:text-sm"
+        className="w-40 rounded-md border border-gray-300 bg-white py-2  pl-10 pr-3 leading-5 placeholder-gray-500 focus:border-dark focus:outline-none focus:ring-1 focus:ring-dark sm:w-48 sm:text-sm xmd:w-80"
         placeholder="Найти"
       />
     </div>

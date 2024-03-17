@@ -35,5 +35,5 @@ export async function GET(
   logger.debug("getting category products", { categoryProducts });
 
   // console.log("categoryName", categoryName);
-  return NextResponse.json(JSON.stringify(categoryProducts), { status: 200 });
+  return NextResponse.json(categoryProducts, { status: 200 });
 }

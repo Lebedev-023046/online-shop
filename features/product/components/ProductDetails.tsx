@@ -22,11 +22,6 @@ interface Props {
 }
 
 export function ProductDetails({ productDetails }: Props) {
-  // const { productDetails, isLoading, error } = useSWR<ProductDetails>(
-  //   `/api/product/${params?.productId ?? "1"}`,
-  //   fetcher,
-  // );
-
   const [itemSize, setItemSize] = useState<OptionType>(
     toReactSelectOption<$Enums.Size>(
       productDetails?.product_item[0].size ?? "XS",
@@ -35,7 +30,7 @@ export function ProductDetails({ productDetails }: Props) {
 
   const chosenProductItem = getChosenProductItem({
     productItems: productDetails?.product_item ?? [],
-    size: itemSize.value,
+    size: itemSize.value as $Enums.Size,
   });
   const options = productDetails?.product_item.map(item => item.size) ?? [];
 

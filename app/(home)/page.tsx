@@ -10,7 +10,7 @@ export default async function Home() {
     },
   });
 
-  const productPreviews = JSON.parse(await response.json());
+  const productPreviews = await response.json();
 
   console.log("productPreviews: ", productPreviews);
 

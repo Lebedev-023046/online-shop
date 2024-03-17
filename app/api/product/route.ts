@@ -26,7 +26,7 @@ export async function GET() {
 
   const productArr = await Promise.all(promiseArr);
 
-  console.log("productArr", productArr);
+  // console.log("productArr", productArr);
 
-  return NextResponse.json(JSON.stringify(productArr), { status: 200 });
+  return NextResponse.json(productArr, { status: 200 });
 }

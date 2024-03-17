@@ -1,4 +1,6 @@
+import { $Enums } from "@/prisma/generated";
+
 export type OptionType = {
-  value: string;
-  label: string;
+  value: $Enums.Size;
+  label: $Enums.Size;
 };

@@ -21,7 +21,7 @@ export default async function CategoryPage({
     },
   );
 
-  const products: Product[] = JSON.parse(await response.json());
+  const products: Product[] = await response.json();
   console.log("products", products);
 
   return (

@@ -5,8 +5,7 @@ import Link from "next/link";
 import { useSession } from "next-auth/react";
 import React, { useCallback, useState } from "react";
 
-import { useSearchAreaContext } from "@/contexts/SearctArea";
-
+import { CartIcon } from "./CartIcon";
 import { Navigation } from "./Navigation";
 import { Profile } from "./Profile";
 import { Search } from "./Search";
@@ -47,18 +46,7 @@ export default function Header() {
           {/* right side */}
           <div className="ml-auto flex gap-4">
             <Search query={query} updateQuery={updateQuery} />
-            <button className="hover:bg-deep-orange-50 rounded-[50%] px-1.5 transition duration-300 ease-in-out">
-              <div className="h-6 w-6">
-                <Link href="/cart">
-                  <Image
-                    src="/header/cart.svg"
-                    alt="cart-icon"
-                    width={24}
-                    height={24}
-                  />
-                </Link>
-              </div>
-            </button>
+            <CartIcon />
           </div>
           <Profile user={data?.user} />
         </div>

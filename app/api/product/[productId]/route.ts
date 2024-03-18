@@ -9,7 +9,7 @@ export async function GET(
 ) {
   const { productId } = params;
 
-  console.log({ productId });
+  // console.log({ productId });
 
   const productInfo = await prisma.product.findUnique({
     where: { id: +productId },
@@ -18,7 +18,7 @@ export async function GET(
     },
   });
 
-  console.log({ productInfo });
+  // console.log({ productInfo });
 
   logger.debug("getting product info", { productInfo });
 

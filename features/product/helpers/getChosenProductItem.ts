@@ -5,7 +5,9 @@ interface Props {
   size: $Enums.Size;
 }
 
-export const getChosenProductItem = ({ productItems, size }: Props) => {
-  console.log({ productItems });
-  return productItems.find(item => item.size === size);
+export const getChosenProductItem = ({
+  productItems,
+  size,
+}: Props): ProductItem => {
+  return productItems.find(item => item.size === size) as ProductItem;
 };

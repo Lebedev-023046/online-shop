@@ -5,7 +5,7 @@ import React, { useEffect } from "react";
 import useSWR from "swr";
 import { useDebounceValue } from "usehooks-ts";
 
-import { useSearchAreaContext } from "@/contexts/SearctArea";
+import { useSearchAreaContext } from "@/contexts/SearctAreaContext";
 import { fetcher } from "@/lib/swr";
 import { Product } from "@/prisma/generated";
 import { Icon } from "@/shared/Icon";
@@ -32,9 +32,9 @@ export function SearchArea({ query }: Props) {
     isLoading,
   } = useSWR<Product[]>(`/api/product/search?query=${debouncedValue}`, fetcher);
 
-  useEffect(() => {
-    console.log({ searchedProducts, error, isLoading });
-  }, [searchedProducts, error, isLoading]);
+  // useEffect(() => {
+  //   console.log({ searchedProducts, error, isLoading });
+  // }, [searchedProducts, error, isLoading]);
 
   useEffect(() => {
     // Close modal on outside click

@@ -12,7 +12,7 @@ export default async function Home() {
 
   const productPreviews = await response.json();
 
-  console.log("productPreviews: ", productPreviews);
+  // console.log("productPreviews: ", productPreviews);
 
   return (
     <div className="mx-auto">

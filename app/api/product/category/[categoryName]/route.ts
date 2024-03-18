@@ -22,6 +22,8 @@ export async function GET(
 ) {
   const { categoryName } = params;
 
+  // console.log("categoryName: ", categoryName);
+
   const categoryProducts = await prisma.product.findMany({
     where: { category_name: categoryMap[categoryName] },
     select: {
@@ -32,7 +34,9 @@ export async function GET(
     },
   });
 
-  logger.debug("getting category products", { categoryProducts });
+  // console.log("categoryProducts: ", categoryProducts);
+
+  // logger.debug("getting category products", categoryProducts);
 
   // console.log("categoryName", categoryName);
   return NextResponse.json(categoryProducts, { status: 200 });

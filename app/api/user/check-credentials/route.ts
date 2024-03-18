@@ -11,15 +11,15 @@ const hashPassword = (password: string) => {
 export async function POST(req: Request) {
   const { username: email, password } = await req.json();
 
-  console.log({ email, password });
+  // console.log({ email, password });
 
   const user = await prisma.user.findFirst({
     where: { email },
   });
 
-  console.log("AFTER FIND FIRST METHOD: ", user);
+  // console.log("AFTER FIND FIRST METHOD: ", user);
 
-  logger.debug("finding user", user);
+  // logger.debug("finding user", user);
 
   if (!user) {
     logger.debug("user not found");

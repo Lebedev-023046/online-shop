@@ -16,13 +16,12 @@ export default async function CategoryPage({
       headers: {
         "Content-Type": "application/json",
       },
-      // cache: "no-cache",
-      // next: { revalidate: 3600 },
     },
   );
 
   const products: Product[] = await response.json();
-  console.log("products", products);
+  // console.log("products", products);
+  // console.log("typeof products", typeof products);
 
   return (
     <div className="mx-auto w-[95%]">

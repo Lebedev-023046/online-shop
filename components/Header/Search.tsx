@@ -3,7 +3,7 @@
 import Image from "next/image";
 import React, { useState } from "react";
 
-import { useSearchAreaContext } from "@/contexts/SearctArea";
+import { useSearchAreaContext } from "@/contexts/SearctAreaContext";
 
 interface Props {
   query: string;

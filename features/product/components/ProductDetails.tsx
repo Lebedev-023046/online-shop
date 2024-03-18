@@ -1,14 +1,14 @@
 "use client";
 
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import { useCallback, useEffect, useState } from "react";
-import ContentLoader from "react-content-loader";
-import useSWR from "swr";
 
 import { Select } from "@/components/Select";
+import { useCartContext } from "@/contexts/CartContext";
+import type { CartItem } from "@/features/cart";
 import { formatTitle } from "@/features/product/helpers/formatTitle";
 import { getChosenProductItem } from "@/features/product/helpers/getChosenProductItem";
-import { fetcher } from "@/lib/swr";
 import { $Enums, Product, ProductItem } from "@/prisma/generated";
 import { OptionType } from "@/types/Select";
 import { toReactSelectOption } from "@/utils";
@@ -22,6 +22,9 @@ interface Props {
 }
 
 export function ProductDetails({ productDetails }: Props) {
+  const router = useRouter();
+  const { addCartItem } = useCartContext();
+
   const [itemSize, setItemSize] = useState<OptionType>(
     toReactSelectOption<$Enums.Size>(
       productDetails?.product_item[0].size ?? "XS",
@@ -34,20 +37,29 @@ export function ProductDetails({ productDetails }: Props) {
   });
   const options = productDetails?.product_item.map(item => item.size) ?? [];
 
-  useEffect(() => {
-    console.log({ chosenProductItem });
-  }, [chosenProductItem]);
-
-  // const { name, price, productImage } = productDetails as Product;
-
-  useEffect(() => {
-    console.log(productDetails);
-  }, [productDetails]);
-
   const updateItemSize = useCallback(
     (value: OptionType) => setItemSize(value),
     [],
   );
+
+  const addItemToCart = () => {
+    const { product_item: _, ...product } = { ...productDetails };
+    const itemToAdd = {
+      ...chosenProductItem,
+      product,
+      qty_in_cart: 1,
+    } as CartItem;
+    addCartItem(itemToAdd);
+    router.push("/cart");
+  };
+
+  useEffect(() => {
+    console.log({ chosenProductItem });
+  }, [chosenProductItem]);
+
+  useEffect(() => {
+    console.log(productDetails);
+  }, [productDetails]);
 
   return (
     <div className="mx-auto w-[95%] py-8">
@@ -69,9 +81,9 @@ export function ProductDetails({ productDetails }: Props) {
           <p className="mt-2 text-gray-500">
             Артикул: {chosenProductItem?.article ?? "Н/Д"}
           </p>
-          <p className="mt-2 text-gray-500">
+          {/* <p className="mt-2 text-gray-500">
             Осталось на складе: {chosenProductItem?.qty_in_stock ?? "0"}
-          </p>
+          </p> */}
           <p className="mt-4 text-2xl font-bold">{productDetails.price} BYN</p>
 
           <div className="relative mt-4">
@@ -100,7 +112,10 @@ export function ProductDetails({ productDetails }: Props) {
             {productDetails.description}
           </p>
 
-          <button className="mt-8 w-full rounded-md bg-soft py-2 px-2 text-dark duration-300 hover:bg-pink-50">
+          <button
+            onClick={addItemToCart}
+            className="mt-8 w-full rounded-md bg-soft py-2 px-2 text-dark duration-300 hover:bg-pink-50"
+          >
             Добавить в корзину
           </button>
         </section>

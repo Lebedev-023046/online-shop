@@ -3,15 +3,18 @@
 import { SessionProvider } from "next-auth/react";
 import { Toaster } from "react-hot-toast";
 
-import { SearchAreaProvider } from "@/contexts/SearctArea";
+import { CartProvider } from "@/contexts/CartContext";
+import { SearchAreaProvider } from "@/contexts/SearctAreaContext";
 
 export function Providers({ children }: { children: React.ReactNode }) {
   return (
     <SessionProvider>
-      <SearchAreaProvider>
-        <Toaster position="bottom-center" />
-        {children}
-      </SearchAreaProvider>
+      <CartProvider>
+        <SearchAreaProvider>
+          <Toaster position="bottom-center" />
+          {children}
+        </SearchAreaProvider>
+      </CartProvider>
     </SessionProvider>
   );
 }

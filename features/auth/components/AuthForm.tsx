@@ -27,7 +27,7 @@ export function AuthForm({
 
   return (
     <div>
-      <h1 className="text-dark text-2xl font-bold">{title}</h1>
+      <h1 className="text-2xl font-bold text-dark">{title}</h1>
       <form
         className="mb-2 mt-8 w-80 max-w-screen-lg sm:w-96"
         onSubmit={handleSubmit(onSubmit)}
@@ -36,7 +36,7 @@ export function AuthForm({
           {fields.map((field, index) => (
             <Fragment key={index}>
               <div className="flex flex-col">
-                <h6 className="text-dark pb-2 font-bold">{field.label}</h6>
+                <h6 className="pb-2 font-bold text-dark">{field.label}</h6>
                 <input
                   {...register(field.name, {
                     required: {
@@ -52,7 +52,7 @@ export function AuthForm({
                   type={field.type}
                   placeholder={field.placeholder}
                   autoComplete={field.autocomplete}
-                  className="border-dark/50 text-dark rounded-md border-2 p-2.5"
+                  className="rounded-md border-2 border-dark/50 p-2.5 text-dark"
                 />
                 <ErrorMessage
                   errors={errors}
@@ -69,7 +69,7 @@ export function AuthForm({
           <>
             <div className="flex items-center gap-2 pt-3">
               <input
-                className="accent-dark h-4 w-4"
+                className="h-4 w-4 accent-dark"
                 id="accept-terms"
                 type="checkbox"
                 {...register("accept-terms", {
@@ -95,7 +95,7 @@ export function AuthForm({
             />
           </>
         ) : null}
-        <button type="submit" className="button bg-dark mt-6 text-white">
+        <button type="submit" className="button mt-6 bg-dark text-white">
           {buttonText}
         </button>
         <p color="gray" className="mt-4 text-center font-normal">

@@ -4,17 +4,34 @@ import React, { useCallback, useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 
 import { PhoneInput, RadioInput, TextInput } from "@/components";
+import { useCartContext } from "@/contexts/CartContext";
+import { CartItem } from "@/features/cart";
+import { $Enums, Address, Order } from "@/prisma/generated";
 
 import { OrderConfirmationModal } from "./OrderConfirmationModal";
 import {
+  DELIVERING_ADDRESS_FORM_FIELDS,
   DELIVERY_OPTIONS,
   OrderProductsPrescreen,
   PAYMENT_METHOD_OPTIONS,
-  SHIPPING_ADDRESS_FORM_FIELDS,
 } from "..";
 import { IOrderForm } from "../types";
 
+type OmittedAddress = Omit<
+  Address,
+  "id" | "createdAt" | "updatedAt" | "user_id"
+>;
+type OmittedOrder = Omit<
+  Order,
+  "id" | "user_id" | "address_id" | "createdAt" | "updatedAt"
+>;
+interface UserOrder extends OmittedOrder {
+  address: OmittedAddress;
+  order_line: CartItem[];
+}
+
 export function OrderForm() {
+  const { cart } = useCartContext();
   const { register, handleSubmit } = useForm<IOrderForm>();
 
   const [showConfirmationModal, setShowConfirmationModal] =
@@ -32,13 +49,30 @@ export function OrderForm() {
     entrance_number: "",
     flat_number: "",
     postal_code: "",
-    deliveryOption: "courier",
-    paymentMethodOption: "cash",
-    orderStatus: "pending",
+    delivering_method: "Courier",
+    payment_method: "Cash",
+    orderStatus: "Pending",
   });
 
   const onSubmit: SubmitHandler<IOrderForm> = async data => {
     try {
+      const { phone_number, payment_method, delivering_method, ...address } =
+        data;
+
+      const order: UserOrder = {
+        phone_number,
+        payment_method,
+        delivering_method,
+        order_status: "Pending",
+        address,
+        order_line: cart,
+        total_order_price: cart.reduce(
+          (acc, item) => acc + item.product.price * item.qty_in_cart,
+          0,
+        ),
+      };
+      console.log({ order });
+
       setOrderForm(data);
       updateShowConfirmationModal(true);
     } catch (error) {
@@ -54,14 +88,14 @@ export function OrderForm() {
         />
       ) : null}
       <section className="mx-auto w-[95%]">
-        <h1 className="p-4 text-center text-2xl font-medium">
+        <h1 className="pt-4 text-center text-2xl font-medium">
           Ваш заказ в MAZY
         </h1>
         <div>
           <div className="m-4">
             <form
               onSubmit={handleSubmit(onSubmit)}
-              className="h-full w-full border-2"
+              className="h-full w-full rounded-md border-2"
             >
               <div className="grid justify-center gap-4 sm:grid-cols-1 xmd:grid-cols-[30%_20%_45%]">
                 <div className="rounded-md p-6 [&>section+section]:pt-8">
@@ -79,7 +113,7 @@ export function OrderForm() {
                   <section>
                     <h1 className="">Адрес доставки</h1>
                     <div className="grid grid-cols-2 gap-4 pt-2">
-                      {SHIPPING_ADDRESS_FORM_FIELDS.map((props, i) => (
+                      {DELIVERING_ADDRESS_FORM_FIELDS.map((props, i) => (
                         <TextInput
                           register={register}
                           defaultValue={

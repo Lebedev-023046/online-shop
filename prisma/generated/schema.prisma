@@ -24,6 +24,8 @@ model User {
   updatedAt DateTime  @updatedAt
   Account   Account[]
   Session   Session[]
+  Address   Address?
+  Order     Order[]
 
   @@map(name: "users")
 }
@@ -103,7 +105,7 @@ model Product {
   productImage String @db.VarChar(500)
 
   category_name ProductCategory
-  product_item  ProductItem[]
+  product_items ProductItem[]
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -118,16 +120,105 @@ model ProductItem {
   // cart_id Int
   // cart    Cart @relation(fields: [cart_id], references: [id])
 
-  product_id Int
-  product    Product @relation(fields: [product_id], references: [id])
+  product_id  Int
+  product     Product @relation(fields: [product_id], references: [id])
+  qty_in_cart Int     @default(1)
 
   size    Size
   article String @db.VarChar(100)
 
   // order_line OrderLine[]
 
+  createdAt DateTime    @default(now())
+  updatedAt DateTime    @updatedAt
+  OrderLine OrderLine[]
+
+  @@map(name: "product_item")
+}
+
+// ORDER
+
+enum PaymentMethod {
+  Cash
+  CardOnReceipt
+  CardOnline
+}
+
+enum DeliveringMethod {
+  Courier
+  Pickup
+  Post
+}
+
+enum OrderStatus {
+  Pending
+  Processing
+  Delivered
+  Canceled
+}
+
+model Address {
+  id Int @id @default(autoincrement())
+
+  // country         String @default("Беларусь")
+  city            String @db.VarChar(200)
+  street_name     String @db.VarChar(20)
+  unit_number     String @db.VarChar(20)
+  entrance_number String @db.VarChar(50)
+  flat_number     String @db.VarChar(50)
+  postal_code     String @db.VarChar(20)
+
+  user    User?   @relation(fields: [user_id], references: [id])
+  user_id String? @unique
+
+  Order Order[]
+
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-  @@map(name: "product_item")
+  @@map(name: "address")
+}
+
+model OrderLine {
+  id Int @id @default(autoincrement())
+
+  qty_ordered Int
+  price       Float
+
+  productImage String @default("") @db.VarChar(500)
+
+  product_item_id Int
+  product_item    ProductItem @relation(fields: [product_item_id], references: [id])
+
+  order_id Int
+  order    Order @relation(fields: [order_id], references: [id])
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map(name: "order_line")
+}
+
+model Order {
+  id Int @id @default(autoincrement())
+
+  user    User?   @relation(fields: [user_id], references: [id])
+  user_id String?
+
+  address    Address @relation(fields: [address_id], references: [id])
+  address_id Int
+
+  order_line OrderLine[]
+
+  phone_number      String @db.VarChar(50)
+  total_order_price Float
+
+  payment_method    PaymentMethod
+  delivering_method DeliveringMethod
+  order_status      OrderStatus
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map(name: "order")
 }

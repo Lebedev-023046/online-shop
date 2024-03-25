@@ -14,7 +14,7 @@ export async function GET(
   const productInfo = await prisma.product.findUnique({
     where: { id: +productId },
     include: {
-      product_item: true,
+      product_items: true,
     },
   });
 

@@ -7,6 +7,7 @@ import React, { useCallback, useState } from "react";
 
 import { CartIcon } from "./CartIcon";
 import { Navigation } from "./Navigation";
+import { OrderIcon } from "./OrderIcon";
 import { Profile } from "./Profile";
 import { Search } from "./Search";
 import { SearchArea } from "./SearchArea";
@@ -29,7 +30,7 @@ export default function Header() {
       <div className="w-full py-5">
         <div className="m-auto flex h-full w-[95%] items-center">
           {/* left side */}
-          <div className="flex items-center gap-6 md:gap-12">
+          <div className="flex items-center gap-6 md:gap-6">
             <h1 className="h-full text-center indent-1.5 font-bold tracking-[0.375rem] sm:text-2xl lg:text-4xl">
               <Link href="/">
                 <Image
@@ -48,7 +49,12 @@ export default function Header() {
             <Search query={query} updateQuery={updateQuery} />
             <CartIcon />
           </div>
-          <Profile user={data?.user} />
+          <div className="mx-2">
+            <OrderIcon />
+          </div>
+          <div className="mx-2">
+            <Profile user={data?.user} />
+          </div>
         </div>
       </div>
 

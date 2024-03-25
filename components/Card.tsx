@@ -18,6 +18,12 @@ export function Card({ product, isSearchArea }: Props) {
 
   const { updateShouldSearchAreaOpen } = useSearchAreaContext();
 
+  const placeholderImage = "/default-product-img.webp";
+
+  const onImageError = (e: any) => {
+    e.target.src = placeholderImage;
+  };
+
   return (
     <div
       onClick={() => updateShouldSearchAreaOpen(false)}
@@ -31,6 +37,7 @@ export function Card({ product, isSearchArea }: Props) {
             alt="product-img"
             width={225}
             height={300}
+            onError={onImageError}
           />
         </div>
 

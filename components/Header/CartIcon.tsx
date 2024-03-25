@@ -5,6 +5,7 @@ import Link from "next/link";
 import React, { useEffect, useState } from "react";
 
 import { useCartContext } from "@/contexts/CartContext";
+import { Icon } from "@/shared/Icon";
 
 export function CartIcon() {
   const { cart } = useCartContext();
@@ -20,14 +21,9 @@ export function CartIcon() {
     <button
       className={`relative rounded-[50%] px-1.5 transition duration-300 ease-in-out  hover:bg-soft`}
     >
-      <div className="h-6 w-6">
+      <div className="">
         <Link href="/cart">
-          <Image
-            src="/header/cart.svg"
-            alt="cart-icon"
-            width={24}
-            height={24}
-          />
+          <Icon src="/header/cart.svg" alt="cart-icon" />
         </Link>
       </div>
       <div className="absolute top-0 right-0 h-4 w-4 rounded-full bg-soft text-xs">

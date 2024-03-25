@@ -49,7 +49,7 @@ export function RadioInput({ name, label, value, register }: RadioInputProps) {
     <div className="flex items-center pt-2">
       <input
         {...register(name)}
-        className="h-4 w-4 rounded-full border-gray-300 bg-gray-100 leading-4"
+        className="min-h-4 min-w-4 rounded-full border-gray-300 bg-gray-100 leading-4"
         type="radio"
         id={value}
         value={value}

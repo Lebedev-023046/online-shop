@@ -12,7 +12,7 @@ export function Icon({ src, alt, small, onClose }: Props) {
   const size = small ? 20 : 24;
 
   return (
-    <div onClick={onClose} className="cursor-pointer">
+    <div onClick={onClose} className={`cursor-pointer w-[${size}px]`}>
       <Image src={src} alt={alt} width={size} height={size} />
     </div>
   );

@@ -170,8 +170,46 @@ exports.Prisma.ProductItemScalarFieldEnum = {
   id: 'id',
   qty_in_stock: 'qty_in_stock',
   product_id: 'product_id',
+  qty_in_cart: 'qty_in_cart',
   size: 'size',
   article: 'article',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.AddressScalarFieldEnum = {
+  id: 'id',
+  city: 'city',
+  street_name: 'street_name',
+  unit_number: 'unit_number',
+  entrance_number: 'entrance_number',
+  flat_number: 'flat_number',
+  postal_code: 'postal_code',
+  user_id: 'user_id',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.OrderLineScalarFieldEnum = {
+  id: 'id',
+  qty_ordered: 'qty_ordered',
+  price: 'price',
+  productImage: 'productImage',
+  product_item_id: 'product_item_id',
+  order_id: 'order_id',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.OrderScalarFieldEnum = {
+  id: 'id',
+  user_id: 'user_id',
+  address_id: 'address_id',
+  phone_number: 'phone_number',
+  total_order_price: 'total_order_price',
+  payment_method: 'payment_method',
+  delivering_method: 'delivering_method',
+  order_status: 'order_status',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 };
@@ -205,13 +243,35 @@ exports.Size = exports.$Enums.Size = {
   XL: 'XL'
 };
 
+exports.PaymentMethod = exports.$Enums.PaymentMethod = {
+  Cash: 'Cash',
+  CardOnReceipt: 'CardOnReceipt',
+  CardOnline: 'CardOnline'
+};
+
+exports.DeliveringMethod = exports.$Enums.DeliveringMethod = {
+  Courier: 'Courier',
+  Pickup: 'Pickup',
+  Post: 'Post'
+};
+
+exports.OrderStatus = exports.$Enums.OrderStatus = {
+  Pending: 'Pending',
+  Processing: 'Processing',
+  Delivered: 'Delivered',
+  Canceled: 'Canceled'
+};
+
 exports.Prisma.ModelName = {
   User: 'User',
   Account: 'Account',
   Session: 'Session',
   VerificationRequest: 'VerificationRequest',
   Product: 'Product',
-  ProductItem: 'ProductItem'
+  ProductItem: 'ProductItem',
+  Address: 'Address',
+  OrderLine: 'OrderLine',
+  Order: 'Order'
 };
 
 /**

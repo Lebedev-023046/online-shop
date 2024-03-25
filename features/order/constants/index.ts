@@ -1,4 +1,4 @@
-export const SHIPPING_ADDRESS_FORM_FIELDS = [
+export const DELIVERING_ADDRESS_FORM_FIELDS = [
   { name: "city", label: "Город", placeholder: "Минск" },
   { name: "street_name", label: "Улица", placeholder: "Центральная" },
   { name: "unit_number", label: "Номер дома", placeholder: "1" },
@@ -9,36 +9,36 @@ export const SHIPPING_ADDRESS_FORM_FIELDS = [
 
 export const DELIVERY_OPTIONS = [
   {
-    name: "deliveryOption",
-    value: "courier",
+    name: "delivering_method",
+    value: "Courier",
     label: "Доставка курьером",
   },
   {
-    name: "deliveryOption",
-    value: "pickup",
+    name: "delivering_method",
+    value: "Pickup",
     label: "Самовывоз",
   },
   {
-    name: "deliveryOption",
-    value: "post",
+    name: "delivering_method",
+    value: "Post",
     label: "Почта",
   },
 ];
 
 export const PAYMENT_METHOD_OPTIONS = [
   {
-    name: "paymentMethodOption",
-    value: "cash",
+    name: "payment_method",
+    value: "Cash",
     label: "Наличными",
   },
   {
-    name: "paymentMethodOption",
-    value: "card-on-receipt",
+    name: "payment_method",
+    value: "CardOnReceipt",
     label: "Картой при получении",
   },
   {
-    name: "paymentMethodOption",
-    value: "card-online",
+    name: "payment_method",
+    value: "CardOnline",
     label: "Картой онлайн",
   },
 ];

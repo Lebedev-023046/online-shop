@@ -16,7 +16,7 @@ body {
 }
 
 .img {
-  @apply h-fit w-fit object-contain;
+  @apply h-fit w-fit rounded-md object-contain;
 }
 
 .select {

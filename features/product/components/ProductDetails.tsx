@@ -14,7 +14,7 @@ import { OptionType } from "@/types/Select";
 import { toReactSelectOption } from "@/utils";
 
 interface ProductDetails extends Product {
-  product_item: ProductItem[];
+  product_items: ProductItem[];
 }
 
 interface Props {
@@ -27,15 +27,15 @@ export function ProductDetails({ productDetails }: Props) {
 
   const [itemSize, setItemSize] = useState<OptionType>(
     toReactSelectOption<$Enums.Size>(
-      productDetails?.product_item[0].size ?? "XS",
+      productDetails?.product_items[0].size ?? "XS",
     ),
   );
 
   const chosenProductItem = getChosenProductItem({
-    productItems: productDetails?.product_item ?? [],
+    productItems: productDetails?.product_items ?? [],
     size: itemSize.value as $Enums.Size,
   });
-  const options = productDetails?.product_item.map(item => item.size) ?? [];
+  const options = productDetails?.product_items.map(item => item.size) ?? [];
 
   const updateItemSize = useCallback(
     (value: OptionType) => setItemSize(value),
@@ -43,7 +43,7 @@ export function ProductDetails({ productDetails }: Props) {
   );
 
   const addItemToCart = () => {
-    const { product_item: _, ...product } = { ...productDetails };
+    const { product_items: _, ...product } = { ...productDetails };
     const itemToAdd = {
       ...chosenProductItem,
       product,
@@ -61,6 +61,12 @@ export function ProductDetails({ productDetails }: Props) {
     console.log(productDetails);
   }, [productDetails]);
 
+  const placeholderImage = "/default-product-img.webp";
+
+  const onImageError = (e: any) => {
+    e.target.src = placeholderImage;
+  };
+
   return (
     <div className="mx-auto w-[95%] py-8">
       <div className="mx-auto flex w-[60%] flex-col justify-center  gap-8 md:w-[80%] md:flex-row">
@@ -72,6 +78,7 @@ export function ProductDetails({ productDetails }: Props) {
             width={400}
             height={600}
             alt="product-details-image"
+            onError={onImageError}
           />
         </section>
         <section className=" md:max-w-[40%]">

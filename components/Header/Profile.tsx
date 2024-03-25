@@ -1,10 +1,11 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import { User } from "next-auth/core/types";
 import { signOut } from "next-auth/react";
 import React, { useEffect, useRef, useState } from "react";
+
+import { Icon } from "@/shared/Icon";
 
 interface Props {
   user: User | undefined;
@@ -47,7 +48,7 @@ export function Profile({ user }: Props) {
   return user?.id ? (
     <div
       onClick={setIsExpanded.bind(null, prev => !prev)}
-      className="flex-center  relative ml-2"
+      className="flex-center relative"
     >
       <button
         title="Профиль"
@@ -73,14 +74,9 @@ export function Profile({ user }: Props) {
     </div>
   ) : (
     <button>
-      <div title="Войти" className="ml-2 h-6 w-6">
+      <div title="Войти" className="h-6 w-6">
         <Link href="/auth/login">
-          <Image
-            src="/header/signin.svg"
-            width={24}
-            height={24}
-            alt="signin-icon"
-          />
+          <Icon src="/header/signin.svg" alt="signin-icon" />
         </Link>
       </div>
     </button>

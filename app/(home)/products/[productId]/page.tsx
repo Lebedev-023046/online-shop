@@ -4,7 +4,7 @@ import { ProductDetails } from "@/features/product";
 import { Product, ProductItem } from "@/prisma/generated";
 
 interface ProductDetails extends Product {
-  product_item: ProductItem[];
+  product_items: ProductItem[];
 }
 
 export default async function ProductDetailsPage({
@@ -23,6 +23,8 @@ export default async function ProductDetailsPage({
   }
 
   const productDetails = await response.json();
+
+  console.log({ productDetails });
 
   return <ProductDetails productDetails={productDetails} />;
 }

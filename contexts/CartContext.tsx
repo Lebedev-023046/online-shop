@@ -1,12 +1,6 @@
 "use client";
 
-import {
-  createContext,
-  useCallback,
-  useContext,
-  useMemo,
-  useState,
-} from "react";
+import { createContext, useCallback, useContext, useState } from "react";
 import toast from "react-hot-toast";
 
 import { CartItem } from "@/features/cart";
@@ -22,6 +16,7 @@ interface ICartContext {
   addCartItem: (value: CartItem) => void;
   updateCartItem: (value: CartItem) => void;
   deleteCartItem: (value: number) => void;
+  emptyCart: () => void;
 }
 
 export const CartContext = createContext<ICartContext>({
@@ -29,6 +24,7 @@ export const CartContext = createContext<ICartContext>({
   addCartItem: () => {},
   updateCartItem: () => {},
   deleteCartItem: () => {},
+  emptyCart: () => {},
 });
 
 export const CartProvider = ({ children }: ICartProvider) => {
@@ -38,7 +34,6 @@ export const CartProvider = ({ children }: ICartProvider) => {
   });
 
   const [cartState, setCart] = useState<CartItem[]>(lsCart);
-  const cart = useMemo(() => cartState, [cartState]);
 
   const addCartItem = useCallback(
     (item: CartItem) => {
@@ -73,9 +68,20 @@ export const CartProvider = ({ children }: ICartProvider) => {
     [setLsCart],
   );
 
+  const emptyCart = useCallback(() => {
+    setCart([]);
+    setLsCart([]);
+  }, [setLsCart]);
+
   return (
     <CartContext.Provider
-      value={{ cart, addCartItem, updateCartItem, deleteCartItem }}
+      value={{
+        cart: cartState,
+        addCartItem,
+        updateCartItem,
+        deleteCartItem,
+        emptyCart,
+      }}
     >
       {children}
     </CartContext.Provider>
